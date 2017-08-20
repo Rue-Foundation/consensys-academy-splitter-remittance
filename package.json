@@ -1,0 +1,21 @@
+{
+  "name": "consensys-academy-splitter-remittance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "ethereumjs-testrpc": "^4.0.1",
+    "solidity-sha3": "^0.4.1",
+    "truffle": "^3.4.8"
+  },
+  "devDependencies": {
+    "bluebird": "^3.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brynbellomy/consensys-academy-splitter-remittance.git"
+  }
+}
