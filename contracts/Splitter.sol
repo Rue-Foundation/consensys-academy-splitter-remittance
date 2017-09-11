@@ -1,6 +1,19 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.4.13;
 
-contract Splitter
+contract Ownable {
+    address owner;
+
+    function Owned() {
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner {
+        require(msg.sender == owner);
+        _;
+    }
+}
+
+contract Splitter is Ownable
 {
     mapping(address => uint) public funds;
 
@@ -37,6 +50,14 @@ contract Splitter
         msg.sender.transfer(amount);
 
         LogWithdrawal(msg.sender, amount);
+        return true;
+    }
+
+    function kill()
+        onlyOwner
+        returns (bool ok)
+    {
+        selfdestruct(owner);
         return true;
     }
 }

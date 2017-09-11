@@ -1,6 +1,19 @@
 pragma solidity ^0.4.13;
 
-contract Remittance
+contract Ownable {
+    address owner;
+
+    function Owned() {
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner {
+        require(msg.sender == owner);
+        _;
+    }
+}
+
+contract Remittance is Ownable
 {
     struct Entry {
         address depositor;
@@ -63,4 +76,11 @@ contract Remittance
         return true;
     }
 
+    function kill()
+        onlyOwner
+        returns (bool ok)
+    {
+        selfdestruct(owner);
+        return true;
+    }
 }
